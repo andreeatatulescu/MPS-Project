@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2022-11-17" view-index="0" gantt-divider-location="475" resource-divider-location="300" version="3.2.3247" locale="en_RO">
+    <description/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Name" width="175" order="0"/>
+        <field id="tpd4" name="Begin date" width="83" order="1"/>
+        <field id="tpd5" name="End date" width="89" order="2"/>
+        <field id="tpc0" name="Assigned to" width="127" order="3"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="color.recent">
+            <![CDATA[#ff0000 #ccccff #009999 #ccffcc #ff9933 #6666ff #666666 #eeeeee #ffff99 #339900]]>
+        </option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="209" order="0"/>
+        <field id="1" name="Default role" width="85" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+            <taskproperty id="tpc0" name="Assigned to" type="custom" valuetype="text" defaultvalue="unassigned"/>
+        </taskproperties>
+        <task id="24" name="Software Design" color="#ffff99" meeting="false" start="2022-11-16" duration="11" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="false">
+            <customproperty taskproperty-id="tpc0" value="Ilie, Andreea"/>
+            <task id="19" name="UI Design" color="#ff9933" meeting="false" start="2022-11-24" duration="5" complete="0" thirdDate="2022-11-24" thirdDate-constraint="0" expand="false">
+                <task id="22" name="Helpful features" color="#ffff99" meeting="false" start="2022-11-24" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="21" name="Figma design" color="#ffff99" meeting="false" start="2022-11-28" duration="3" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="20" name="Think about intuitive texts and user commands" color="#ffff99" meeting="false" start="2022-11-24" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="3" name="Software Architecture" color="#ff9933" meeting="false" start="2022-11-22" duration="2" complete="0" thirdDate="2022-11-07" thirdDate-constraint="0" expand="false">
+                <task id="18" name="Organizing the code" color="#ffff99" meeting="false" start="2022-11-22" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="17" name="Choose the programming language" color="#ffff99" meeting="false" start="2022-11-22" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" priority="2" expand="true"/>
+            </task>
+            <task id="2" name="Solution Description" color="#ff9933" meeting="false" start="2022-11-16" duration="5" complete="0" thirdDate="2022-11-16" thirdDate-constraint="0" expand="false">
+                <task id="14" name="Filter the algorithms described in documentation" color="#ffff99" meeting="false" start="2022-11-22" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="13" name="Deep diving into technical part" color="#ffff99" meeting="false" start="2022-11-18" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="12" name="Analyzing the project documentation" color="#ffff99" meeting="false" start="2022-11-16" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+        </task>
+        <task id="25" name="Project Research" color="#ccff33" meeting="false" start="2022-11-08" duration="45" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="false">
+            <customproperty taskproperty-id="tpc0" value="Amalia, Andreea, Ilie"/>
+            <task id="56" name="Analyzing final report" color="#666666" meeting="false" start="2023-01-03" duration="5" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="false">
+                <task id="59" name="Documenting all project steps" color="#ccff33" meeting="false" start="2023-01-03" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="57" name="Compare different approaches" color="#ccff33" meeting="false" start="2023-01-03" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="58" name="Drawing a conclusion" color="#ccff33" meeting="false" start="2023-01-09" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" priority="2" expand="true"/>
+            </task>
+            <task id="1" name="Domain research" color="#666666" meeting="false" start="2022-11-08" duration="6" complete="0" thirdDate="2022-11-07" thirdDate-constraint="0" expand="false">
+                <customproperty taskproperty-id="tpc0" value="unassigned"/>
+                <task id="9" name="Familiarising with binarization domain" color="#cccccc" meeting="false" start="2022-11-10" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                    <task id="44" name="Collect resources" color="#ccff33" meeting="false" start="2022-11-10" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                    <task id="10" name="Looking for already existing algorithms" color="#ccff33" meeting="false" start="2022-11-10" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                </task>
+                <task id="8" name="Start project documentation" color="#cccccc" meeting="false" start="2022-11-10" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                    <task id="11" name="Identify the possible challenges" color="#ccff33" meeting="false" start="2022-11-10" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                </task>
+                <task id="7" name="Clarifying requirements" color="#ccff66" meeting="false" start="2022-11-08" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+        </task>
+        <task id="86" name="Milestone 1" color="#ff0000" meeting="true" start="2022-11-08" duration="0" complete="0" thirdDate="2022-11-02" thirdDate-constraint="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="all"/>
+        </task>
+        <task id="87" name="Milestone 2" color="#ff0000" meeting="true" start="2022-12-06" duration="0" complete="0" thirdDate="2022-11-02" thirdDate-constraint="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="all"/>
+        </task>
+        <task id="88" name="Milestone 3" color="#ff0000" meeting="true" start="2023-01-10" duration="0" complete="0" thirdDate="2022-11-02" thirdDate-constraint="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="all"/>
+        </task>
+        <task id="62" name="Project Management" color="#99ccff" meeting="false" start="2022-10-25" duration="10" complete="0" thirdDate="2022-10-25" thirdDate-constraint="0" expand="false">
+            <customproperty taskproperty-id="tpc0" value="Andreea"/>
+            <task id="60" name="Tracking" color="#cccccc" meeting="false" start="2022-10-25" duration="10" complete="0" thirdDate="2022-10-25" thirdDate-constraint="0" expand="true">
+                <customproperty taskproperty-id="tpc0" value="Andreea"/>
+                <task id="65" name="Create Trello board" color="#99ccff" meeting="false" start="2022-11-07" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                    <customproperty taskproperty-id="tpc0" value="Andreea"/>
+                </task>
+                <task id="5" name="Decide the methodology type" color="#99ccff" meeting="false" start="2022-11-01" duration="1" complete="0" thirdDate="2022-11-07" thirdDate-constraint="0" expand="true">
+                    <customproperty taskproperty-id="tpc0" value="all"/>
+                </task>
+                <task id="6" name="Create WBS" color="#99ccff" meeting="false" start="2022-10-25" duration="6" complete="0" thirdDate="2022-11-07" thirdDate-constraint="0" expand="true">
+                    <customproperty taskproperty-id="tpc0" value="all"/>
+                </task>
+                <task id="85" name="Create Gantt Graphic" color="#99ccff" meeting="false" start="2022-11-01" duration="5" complete="0" thirdDate="2022-10-20" thirdDate-constraint="0" expand="true">
+                    <customproperty taskproperty-id="tpc0" value="Andreea"/>
+                </task>
+            </task>
+            <task id="63" name="Planning &amp; Meetings" color="#cccccc" meeting="false" start="2022-11-04" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="false">
+                <customproperty taskproperty-id="tpc0" value="Andreea"/>
+                <task id="66" name="Set reminders for milestones" color="#99ccff" meeting="false" start="2022-11-04" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="64" name="Set repetitive meetings" color="#99ccff" meeting="false" start="2022-11-04" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="0" name="Project Setup" color="#cccccc" meeting="false" start="2022-10-25" duration="1" complete="0" thirdDate="2022-10-25" thirdDate-constraint="0" expand="true">
+                <customproperty taskproperty-id="tpc0" value="Andreea"/>
+                <task id="4" name="Create Git Repository" color="#99ccff" meeting="false" start="2022-10-25" duration="1" complete="0" thirdDate="2022-11-07" thirdDate-constraint="0" expand="true">
+                    <customproperty taskproperty-id="tpc0" value="Andreea"/>
+                </task>
+            </task>
+        </task>
+        <task id="26" name="Development" color="#339900" meeting="false" start="2022-11-22" duration="33" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="Amalia, Alex, Andrei"/>
+            <task id="34" name="Final Demo" color="#009999" meeting="false" start="2022-12-16" duration="15" complete="0" thirdDate="2022-12-16" thirdDate-constraint="0" expand="false">
+                <task id="55" name="Functionable UI" color="#339900" meeting="false" start="2022-12-30" duration="3" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="54" name="Other minor fixes" color="#339900" meeting="false" start="2023-01-04" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="53" name="Both global and local cases" color="#339900" meeting="false" start="2022-12-16" duration="10" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="33" name="Demo Prototype" color="#009999" meeting="false" start="2022-12-01" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                <task id="52" name="Helpful CLI indications" color="#339900" meeting="false" start="2022-12-01" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="51" name="Mock data" color="#339900" meeting="false" start="2022-12-02" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="49" name="Obtain the binarized image for global case" color="#339900" meeting="false" start="2022-12-01" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="30" name="Binarization Process" color="#009999" meeting="false" start="2022-11-22" duration="17" complete="0" thirdDate="2022-11-22" thirdDate-constraint="0" expand="true">
+                <task id="32" name="Local" color="#ccffcc" meeting="false" start="2022-12-09" duration="4" complete="0" thirdDate="2022-12-09" thirdDate-constraint="0" expand="true">
+                    <task id="46" name="Define the type of determined windows" color="#339900" meeting="false" start="2022-12-09" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                    <task id="47" name="Obtain the target area" color="#339900" meeting="false" start="2022-12-09" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                    <task id="48" name="Adjust the global algorithm" color="#339900" meeting="false" start="2022-12-13" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                </task>
+                <task id="31" name="Global" color="#ccffcc" meeting="false" start="2022-11-22" duration="7" complete="0" thirdDate="2022-11-22" thirdDate-constraint="0" expand="true">
+                    <task id="50" name="Combine in order to form the algorithm" color="#339900" meeting="false" start="2022-11-29" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                    <task id="43" name="Classify the pixels" color="#339900" meeting="false" start="2022-11-22" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                        <depend id="50" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="45" name="Implementing thresholding" color="#339900" meeting="false" start="2022-11-22" duration="3" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                        <depend id="50" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                </task>
+            </task>
+            <task id="29" name="Data Visualisation (Histogram)" color="#009999" meeting="false" start="2022-11-25" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                <task id="42" name="Create histogram view from data" color="#339900" meeting="false" start="2022-11-25" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                    <depend id="50" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="41" name="Histogram customization" color="#339900" meeting="false" start="2022-11-28" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                    <depend id="50" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="28" name="Tree Implementation" color="#009999" meeting="false" start="2022-11-22" duration="2" complete="0" thirdDate="2022-11-22" thirdDate-constraint="0" expand="false">
+                <task id="38" name="Implementing ways of traversing the tree" color="#339900" meeting="false" start="2022-11-22" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="false"/>
+                <task id="40" name="Implementing the aux Node class" color="#339900" meeting="false" start="2022-11-22" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="39" name="Implementing the common operations" color="#339900" meeting="false" start="2022-11-22" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="27" name="Parsing CSV files" color="#009999" meeting="false" start="2022-11-22" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="false">
+                <task id="36" name="Optimizing the time for reading and writing" color="#339900" meeting="false" start="2022-11-22" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="35" name="Choose the library to be used" color="#009900" meeting="false" start="2022-11-22" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+        </task>
+        <task id="67" name="Testing" color="#6666ff" meeting="false" start="2022-11-23" duration="32" complete="0" thirdDate="2022-11-23" thirdDate-constraint="0" expand="false">
+            <customproperty taskproperty-id="tpc0" value="Andrei, Alex"/>
+            <task id="71" name="Performance evaluation" color="#ccccff" meeting="false" start="2022-12-23" duration="6" complete="0" thirdDate="2022-12-23" thirdDate-constraint="0" expand="true">
+                <task id="79" name="Extract statistics" color="#6666ff" meeting="false" start="2022-12-23" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="81" name="Plot graphics" color="#6666ff" meeting="false" start="2022-12-29" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="70" name="Intermediar solution Tests" color="#ccccff" meeting="false" start="2022-12-02" duration="2" complete="0" thirdDate="2022-12-02" thirdDate-constraint="0" expand="true">
+                <task id="78" name="Check CLI texts" color="#6666ff" meeting="false" start="2022-12-02" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="72" name="Final Solution Tests" color="#ccccff" meeting="false" start="2022-12-19" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="false">
+                <task id="82" name="UI tests" color="#6666ff" meeting="false" start="2022-12-19" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="73" name="Writing the final report" color="#ccccff" meeting="false" start="2023-01-02" duration="4" complete="0" thirdDate="2022-12-23" thirdDate-constraint="0" expand="true">
+                <task id="84" name="Interpreting performance statistics" color="#6666ff" meeting="false" start="2023-01-02" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="83" name="Observations regarding coverage" color="#6666ff" meeting="false" start="2023-01-04" duration="1" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="69" name="Global Binarization Tests" color="#ccccff" meeting="false" start="2022-11-23" duration="8" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="false">
+                <task id="75" name="Identificate corner cases" color="#6666ff" meeting="false" start="2022-11-29" duration="4" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="74" name="Test functions independently" color="#6666ff" meeting="false" start="2022-11-23" duration="5" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="68" name="Local Binarization Tests" color="#ccccff" meeting="false" start="2022-12-15" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true">
+                <task id="77" name="Add tests for the new functions" color="#6666ff" meeting="false" start="2022-12-15" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+                <task id="76" name="Adjust global binarization tests" color="#6666ff" meeting="false" start="2022-12-15" duration="2" complete="0" thirdDate="2022-11-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
