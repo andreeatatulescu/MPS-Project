@@ -30,6 +30,29 @@ The goal of each sprint is basically to complete the related milestone.
 
 The reason behind our decision to use this methodology is the need to finish the project in a fairly short period of time, hoping that this way of working will increase productivity and will keep us focused on the current sprint’s objectives.
 
+### Risk Management Plan
 
+Every project is exposed to risks, but the key is how we treat those unfortunate situations which may occur.
+
+After setting project objectives, we could easily identify risks because they are closely linked. In order to prepare some strategies, we analyzed the potential impact of each action and set the most likely to happen scenario.
+
+Thus, we have elaborated the [Risk Management Plan](<https://docs.google.com/spreadsheets/d/1FHvk3Qo5tC1G0ROmzbTyDzAk8Xa9e9Wx/edit?usp=sharing&ouid=104984308872486268779&rtpof=true&sd=true>).
+
+
+### Team Progress
+
+We discuss the main issues during weeklies. Besides these, we met after important steps were made. All the calls were via [Google Meet](<https://meet.google.com/>). 
+
+In order to keep track of tasks status, we use the [Trello board](https://trello.com/b/ErNesWJF/mps-project) previously mentioned, which is now populated.
+
+Git commits are also useful in order to know about each other's progress. 
+
+We couldn't fully respect the initial plan and work according Gantt diagram because we were slow downed by the performance of the programming language chosen, but in the end we managed to achieve all the objectives set for the 2nd milestone.
+
+### Monitoring, evaluation and project development control
+
+We are going to have `RETRO` after the 2nd milestone in order to get feedback and visualize where we are now on the roadmap. This will be followed up by `PLANNING`, deciding which are the next steps and defining responsibilities for each team member.
+
+Also, we started the first round of feedback, collecting answers by completing the following [form](<https://forms.office.com/e/Ba72jrc7eX>). 
 
 
