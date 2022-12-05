@@ -14,7 +14,6 @@ public class IfNode implements Node {
     private Node ifTrue;
     private Node ifFalse;
 
-
     @Override
     public double calculate(Image image) {
         if (condition.verify(image)) {

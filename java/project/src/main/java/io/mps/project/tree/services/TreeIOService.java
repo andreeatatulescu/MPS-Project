@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.Optional;
 
-public class TreeService {
+public class TreeIOService {
     private static final String DIRECTORY = "src/main/resources/tree/";
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -31,11 +31,11 @@ public class TreeService {
         }
     }
 
-    private TreeService() {}
+    private TreeIOService() {}
 
-    private static final TreeService INSTANCE = new TreeService();
+    private static final TreeIOService INSTANCE = new TreeIOService();
 
-    public static TreeService getInstance() {
+    public static TreeIOService getInstance() {
         return INSTANCE;
     }
 }

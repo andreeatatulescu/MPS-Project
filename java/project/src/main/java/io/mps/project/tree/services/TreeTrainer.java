@@ -32,8 +32,6 @@ public class TreeTrainer {
                 .sequential()
                 .collectList()
                 .block();
-
-
     }
 
     private void trainTree(int depth) {
@@ -45,7 +43,7 @@ public class TreeTrainer {
 
         bestTreeManager.changeIfBetter(tree);
 
-        System.out.println("Validation Time: " + (new Date().getTime() - end) / 1000.0);
+        System.out.println("Validation Time: " + (new Date().getTime() - end) / 1000.0 + " | depth: " + depth);
     }
 
     private Node randomNode(int depth) {

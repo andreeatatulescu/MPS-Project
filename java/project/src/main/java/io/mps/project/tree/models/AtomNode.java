@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AtomNode implements Node {
-    public ThresholdType thresholdType;
+    private ThresholdType thresholdType;
 
     @Override
     public double calculate(Image image) {

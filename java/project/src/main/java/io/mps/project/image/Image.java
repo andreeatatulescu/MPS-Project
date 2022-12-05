@@ -17,6 +17,6 @@ public class Image {
     }
 
     public double measure(double threshold) {
-        return fMeasures.get((int)(threshold * 255));
+        return fMeasures.get((int)(threshold * 255)) / fMeasures.get((int)(idealThreshold * 255)) * 100;
     }
 }

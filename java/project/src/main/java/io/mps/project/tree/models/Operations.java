@@ -12,7 +12,6 @@ public final class Operations {
         return switch (operationType) {
             case ARITHMETIC_MEAN -> Operations::arithmeticMean;
             case GEOMETRIC_MEAN -> Operations::geometricMean;
-            case SQUARED_MEAN -> Operations::squaredMean;
             case HARMONIC_MEAN -> Operations::harmonicMean;
         };
     }

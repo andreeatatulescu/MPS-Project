@@ -2,8 +2,8 @@ package io.mps.project.tree.services;
 
 import com.google.common.collect.Iterables;
 import io.mps.project.image.Image;
-import io.mps.project.image.ImageService;
-import io.mps.project.tree.models.Node;
+import io.mps.project.image.ImageIOService;
+import io.mps.project.tree.models.*;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
@@ -13,15 +13,19 @@ import java.util.List;
 public class TreeEvaluator {
     private static final int CHUNK_SIZE = 1000;
 
-    private final ImageService imageService = ImageService.getInstance();
+    private final ImageIOService imageService = ImageIOService.getInstance();
 
 
-    public double test(Node tree) {
-        return evaluate(tree, imageService.getTestFiles());
+    public double train(Node tree) {
+        return evaluate(tree, imageService.getTrainSet());
     }
 
     public double validate(Node tree) {
         return evaluate(tree, imageService.getValidationSet());
+    }
+
+    public double test(Node tree) {
+        return evaluate(tree, imageService.getTestSet());
     }
 
     public double evaluate(Node tree, Collection<Image> data) {
@@ -44,6 +48,19 @@ public class TreeEvaluator {
         }
 
         return performance / data.size();
+    }
+
+    public int complexity(Node node) {
+        if (node instanceof AtomNode) {
+            return 1;
+        }
+        if (node instanceof IfNode ifNode) {
+            return 1 + Math.max(complexity(ifNode.getIfFalse()), complexity(ifNode.getIfTrue()));
+        }
+        if (node instanceof ForNode forNode) {
+            return 1 + forNode.getChildren().stream().mapToInt(this::complexity).sum();
+        }
+        throw new IllegalArgumentException();
     }
 
     private TreeEvaluator() {}
