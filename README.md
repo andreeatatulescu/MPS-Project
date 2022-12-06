@@ -47,6 +47,8 @@ In order to keep track of tasks status, we use the [Trello board](https://trello
 
 Git commits are also useful in order to know about each other's progress. 
 
+We have even a [SharePoint](<https://ctipub.sharepoint.com/sites/MPS-Project>) to store all documentation files and weekly notes.
+
 We couldn't fully respect the initial plan and work according Gantt diagram because we were slow downed by the performance of the programming language chosen, but in the end we managed to achieve all the objectives set for the 2nd milestone.
 
 ### Monitoring, evaluation and project development control
