@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9530611e-2760-4015-b947-16ab74a030b9" name="Changes" comment="" />
+    <list default="true" id="9530611e-2760-4015-b947-16ab74a030b9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/1/1/116dc4fc5a3affd621db5193b404eda1f6ef0e21" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/8/8/88bed138ecaaf5ad61507ef717476a957cbec0f1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4c599cbd7d13637129c3d47d6f0669d8f0a39bef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/3/53298221a692fcfa55a0b92b0da693791561d312" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/d/6d727035f7ffed561295d97a670ce07a87ac1bc2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/d/6dfdaa61cdb548bdf311d824cb0079670d9279bb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/ea59766f6e3c51b94d9a0e20b44cb7f2289d2c6c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/global/FileSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/local/FileSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/global/AbstractGlobalTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/global/BestTreeManagerUnitTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/global/CsvParserUnitTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/global/GlobalThresholdIntegrationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/local/AbstractLocalTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/local/LocalThresholdIntegrationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/local/ThreadUtilsUnitTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/BestTreeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/implementation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global/CsvParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/global/CsvParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/global/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global/ThreadUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/global/ThreadUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/local/MainL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/local/MainL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/local/ThreadUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/local/ThreadUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +48,10 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -28,29 +64,35 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;public&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dobre/Desktop/ISI/Tema ISI/Bucharest-Guide&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andreipadureanu/PycharmProjects/MPS-Project/mps/src&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="utils" />
       <recent name="" />
       <recent name="global" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="global.Main" />
-      <module name="implementation" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.tests in implementation">
     <configuration name="MainL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="local.MainL" />
       <module name="implementation" />
@@ -64,10 +106,74 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LocalThresholdIntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="implementation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.local.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.local" />
+      <option name="MAIN_CLASS_NAME" value="tests.local.LocalThresholdIntegrationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LocalThresholdIntegrationTests.WHEN_trainTree_THEN_saveOnlyIfItIsBetter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="implementation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.local.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.local" />
+      <option name="MAIN_CLASS_NAME" value="tests.local.LocalThresholdIntegrationTests" />
+      <option name="METHOD_NAME" value="WHEN_trainTree_THEN_saveOnlyIfItIsBetter" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ThreadUtilsUnitTests.GIVEN_allPixels_WHEN_obtainScoresForThread_THEN_scoreIsCorrect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="implementation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.local.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.local" />
+      <option name="MAIN_CLASS_NAME" value="tests.local.ThreadUtilsUnitTests" />
+      <option name="METHOD_NAME" value="GIVEN_allPixels_WHEN_obtainScoresForThread_THEN_scoreIsCorrect" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tests in implementation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="implementation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.tests in implementation" />
+        <item itemvalue="JUnit.LocalThresholdIntegrationTests.WHEN_trainTree_THEN_saveOnlyIfItIsBetter" />
         <item itemvalue="Application.MainL" />
+        <item itemvalue="JUnit.LocalThresholdIntegrationTests" />
+        <item itemvalue="JUnit.ThreadUtilsUnitTests.GIVEN_allPixels_WHEN_obtainScoresForThread_THEN_scoreIsCorrect" />
       </list>
     </recent_temporary>
   </component>
@@ -120,6 +226,10 @@
       <workItem from="1672059450919" duration="12762000" />
       <workItem from="1672151852650" duration="2879000" />
       <workItem from="1672217656222" duration="2598000" />
+      <workItem from="1673180464409" duration="4820000" />
+      <workItem from="1673199404362" duration="598000" />
+      <workItem from="1673200093215" duration="10362000" />
+      <workItem from="1673227019850" duration="6980000" />
     </task>
     <servers />
   </component>
@@ -142,5 +252,30 @@
       <path value="$PROJECT_DIR$/MPS-Project" />
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/global/Main.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/global/ThreadUtils.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/local/MainL.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

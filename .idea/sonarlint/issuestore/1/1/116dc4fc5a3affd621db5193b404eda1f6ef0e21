@@ -1,0 +1,15 @@
+
+N	java:S106"9Replace this use of System.out or System.err by a logger.(®³ç§
+N	java:S106,"9Replace this use of System.out or System.err by a logger.(­ñã‰
+N	java:S106."9Replace this use of System.out or System.err by a logger.(½ºÚ
+S	java:S1067"9Replace this use of System.out or System.err by a logger.(Æ÷òøÿÿÿÿ
+N	java:S106@"9Replace this use of System.out or System.err by a logger.(­ñã‰
+S	java:S106C"9Replace this use of System.out or System.err by a logger.(Úêó·şÿÿÿÿ
+V	java:S125D"<This block of commented-out lines of code should be removed.(İÉşØøÿÿÿÿ
+M	java:S106H"9Replace this use of System.out or System.err by a logger.(³Á’E
+S	java:S106`"9Replace this use of System.out or System.err by a logger.(ÃŞ‰ñùÿÿÿÿ
+M	java:S106p"9Replace this use of System.out or System.err by a logger.(³Á’E
+N	java:S106w"9Replace this use of System.out or System.err by a logger.(ªŠÕ¯
+]
+java:S3457‚"AFormat specifiers should be used instead of string concatenation.(Å›Œïøÿÿÿÿ
+T	java:S106‚"9Replace this use of System.out or System.err by a logger.(Å›Œïøÿÿÿÿ

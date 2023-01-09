@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Semaphore;
 
 public class Utils {
     /**
@@ -26,15 +25,11 @@ public class Utils {
      * Method to compute the windows; based on the number of threads
      * @param filePixels the list containing information about every pixel from all the files
      * @param computedWindows the one that will store the result of this method
-     * @param numberOfThreads the number of threads
-     * @param threads the threads
-     * @param semaphore the semaphore
      */
-    public static void compWindows(List<List<List<Float>>> filePixels, List<List<List<Float>>> computedWindows,
-                                   int numberOfThreads, Thread[] threads, Semaphore semaphore) {
+    public static void compWindows(List<List<List<Float>>> filePixels, List<List<List<Float>>> computedWindows) {
         for (List<List<Float>> pixels : filePixels) {
             List<List<Float>> result = new ArrayList<>();
-            ThreadUtils.runnerWindows(pixels, numberOfThreads, threads, result, semaphore);
+            ThreadUtils.runnerWindows(pixels, result);
             computedWindows.add(result);
         }
     }
@@ -42,18 +37,14 @@ public class Utils {
     /**
      * Method to obtain the score of every tree.
      * @param filePixels the list containing information about every pixel from all the files
-     * @param numberOfThreads the number of threads
-     * @param threads the threads
      * @param thresholds the thresholds for every window of every file
-     * @param semaphore the semaphore
      * @return the score of every tree
      */
-    public static float getScore(List<List<List<Float>>> filePixels, int numberOfThreads, Thread[] threads,
-                                 List<List<Float>> thresholds, Semaphore semaphore) {
+    public static float getScore(List<List<List<Float>>> filePixels, List<List<Float>> thresholds) {
         float sum = 0;
         for (int i = 0; i < filePixels.size(); i++) {
             int[] pix = {0, 0, 0, 0};
-            ThreadUtils.runnerScore(filePixels.get(i), numberOfThreads, threads, thresholds.get(i), pix, semaphore);
+            ThreadUtils.runnerScore(filePixels.get(i), thresholds.get(i), pix);
             sum += pix[0] / (pix[0] + 0.5 * (pix[2] + pix[3]));
         }
         return sum / filePixels.size();

@@ -3,24 +3,27 @@ package global;
 import utils.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.Semaphore;
 
 public class ThreadUtils {
 
+    private static final int numberOfThreads = 16;
+    private static final Thread[] threads = new Thread[numberOfThreads];
+    private static final Semaphore semaphore = new Semaphore(1);
+
     /**
      * This is a parent method for runThread to start the calculations on threads and
      * obtain the result we want on all the files.
      */
-    public static void runner(List<File> filesList, int numberOfThreads, Thread[] threads,
-                              List<String> operations, Tree tree, List<Float> result,
-                              Semaphore semaphore) {
+    public static void runner(List<File> filesList, Tree tree, List<Float> result) {
         for (int t = 0; t < numberOfThreads; t++) {
             int thread = t;
             threads[t] = new Thread(() -> {
                 try {
-                    ThreadUtils.runThread(filesList, numberOfThreads, thread, operations, tree, result, semaphore);
+                    ThreadUtils.runThread(filesList, thread, tree, result);
                 } catch (Exception ignored) {}
             });
         }
@@ -37,15 +40,11 @@ public class ThreadUtils {
     /**
      * Method to obtain the scores of the files based on the thread.
      * @param filesList the files on which we apply the tree.
-     * @param numberOfThreads number of threads that are handling the calculation of scores
      * @param thread the current thread
-     * @param operations the list of operations
      * @param tree the tree we apply on the files
      * @param result the scores
      */
-    public static void runThread(List<File> filesList, int numberOfThreads, int thread,
-                                 List<String> operations, Tree tree, List<Float> result,
-                                 Semaphore semaphore) throws Exception {
+    public static void runThread(List<File> filesList, int thread, Tree tree, List<Float> result) throws Exception {
         // Obtaining the start and the end for each thread to divide the files between each other.
         List<Integer> range = Utils.getThreadRange(filesList.size(), numberOfThreads, thread);
         List<File> inFiles = filesList.subList(range.get(0), range.get(1));
@@ -62,7 +61,7 @@ public class ThreadUtils {
             Float idealThreshold = thresholds.get(0);
             thresholds.remove(0);
             // This is the maximum width of the operations at each level.
-            int maxWidth = operations.size();
+            int maxWidth = ALL_OPERATIONS.size();
             /* Considering we start from the leaves and go to root, in the index list we have the indexes stored
             the same way. */
             int depth = 0;
@@ -70,7 +69,7 @@ public class ThreadUtils {
                 for (int i = 0; i < maxWidth; i++) {
                     Float thr1 = thresholds.get(tree.getThreshIdx().get(depth).get(i * 2));
                     Float thr2 = thresholds.get(tree.getThreshIdx().get(depth).get(i * 2 + 1));
-                    String operation = operations.get(tree.getOperIdx().get(depth).get(i));
+                    String operation = ALL_OPERATIONS.get(tree.getOperIdx().get(depth).get(i));
                     if (Objects.equals(operation, "CubicMean")) {
                         tempThresh.add(Means.cubic_mean(thr1, thr2));
                     } else if (Objects.equals(operation, "SquareMean")) {
@@ -89,7 +88,7 @@ public class ThreadUtils {
                 }
                 depth++;
                 // Since there is one threshold that remains the first time, we must use it in the next level.
-                if (maxWidth == operations.size()) {
+                if (maxWidth == ALL_OPERATIONS.size()) {
                     tempThresh.add(thresholds.get(thresholds.size() - 1));
                     maxWidth = (maxWidth + 1) / 2;
                 } else {
@@ -106,4 +105,7 @@ public class ThreadUtils {
         result.addAll(tempResult);
         semaphore.release();
     }
+
+    public static final List<String> ALL_OPERATIONS =
+            Arrays.asList("CubicMean", "SquareMean", "ArithmeticMean", "GeometricMean", "HarmonicMean", "Minimum", "Maximum");
 }

@@ -1,0 +1,15 @@
+package global;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+
+public class FileSet {
+
+    private static final List<File> fileList = Arrays.stream(Objects.requireNonNull(new File("src/global/MPS-Global").listFiles())).toList();
+
+    public static final List<File> testSet = fileList.subList(fileList.size() * 95 / 100, fileList.size());
+    public static final List<File> trainSet = fileList.subList(0, fileList.size() * 95 / 100);
+}

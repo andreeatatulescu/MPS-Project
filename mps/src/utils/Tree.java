@@ -15,6 +15,11 @@ public class Tree {
         this.operIdx = new ArrayList<>();
     }
 
+    public Tree(List<List<Integer>> threshIdx, List<List<Integer>> operIdx) {
+        this.threshIdx = threshIdx;
+        this.operIdx = operIdx;
+    }
+
     public List<List<Integer>> getThreshIdx() {
         return threshIdx;
     }

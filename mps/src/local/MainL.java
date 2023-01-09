@@ -1,53 +1,39 @@
 package local;
 
+import utils.BestTreeManager;
 import utils.Utils;
 import utils.Tree;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.concurrent.Semaphore;
 
 public class MainL {
-
-    public static void main(String[] args) throws IOException {
+    private static final List<String> operations = Arrays.asList("CubicMean", "SquareMean", "ArithmeticMean",
+            "GeometricMean", "HarmonicMean");
+    public static Tree train() throws IOException {
         // Obtaining the list of files from the data folder and randomizing it for different outputs.
-        List<File> filesList = new ArrayList<>
-                (Arrays.stream(Objects.requireNonNull(new File("src/local/MPS-Local").listFiles())).toList());
-        Collections.shuffle(filesList);
-
-        List<String> operations = Arrays.asList("CubicMean", "SquareMean", "ArithmeticMean",
-                "GeometricMean", "HarmonicMean");
 
         List<Tree> bestTrees = new ArrayList<>();
         float scorePerSet;
-
-        // Using thread parallelization for faster reading of files and computing of results
-        int numberOfThreads = 16;
-        Thread[] threads = new Thread[numberOfThreads];
-        Semaphore semaphore = new Semaphore(1);
 
         List<List<List<Float>>> filePixels = new ArrayList<>();
         List<List<List<Float>>> computedWindows = new ArrayList<>();
         List<List<Float>> thresholds = new ArrayList<>();
 
         // Reading the pixels from the first 70% of the files and computing their windows.
-        ThreadUtils.runnerRead(filesList.subList(0, filesList.size() * 70 / 100), numberOfThreads, threads, filePixels,
-                               semaphore);
-        Utils.compWindows(filePixels, computedWindows, numberOfThreads, threads, semaphore);
+        ThreadUtils.runnerRead(FileSet.trainSet, filePixels);
+        Utils.compWindows(filePixels, computedWindows);
 
         System.out.println("The scores for the training set are:");
         // Choosing the best 5 trees with a score higher than 54 from the first 70% of files.
         while (bestTrees.size() < 5) {
             thresholds.clear();
-            Tree tree = new Tree();
-            tree.ourShuffle(operations.size(), operations.size() * 2);
-            tree.ourShuffle(operations.size(), operations.size());
-            tree.ourShuffle(operations.size(), operations.size() - 1);
-            tree.ourShuffle(operations.size(), (operations.size() - 1) / 2);
-            ThreadUtils.runnerThresholds(computedWindows, numberOfThreads, threads, operations, tree, thresholds, semaphore);
-            scorePerSet = Utils.getScore(filePixels, numberOfThreads, threads, thresholds, semaphore);
+            Tree tree = generateRandomTree();
+            ThreadUtils.runnerThresholds(computedWindows, operations, tree, thresholds);
+            scorePerSet = Utils.getScore(filePixels, thresholds);
             System.out.println(scorePerSet * 100);
             if (scorePerSet * 100 > 54) {
                 System.out.println("Found a score higher than 54: " + scorePerSet * 100);
@@ -63,14 +49,13 @@ public class MainL {
         on the next 25% of the files. */
         filePixels.clear();
         computedWindows.clear();
-        ThreadUtils.runnerRead(filesList.subList(filesList.size() * 70 / 100, filesList.size() * 95 / 100),
-                                                    numberOfThreads, threads, filePixels, semaphore);
-        Utils.compWindows(filePixels, computedWindows, numberOfThreads, threads, semaphore);
+        ThreadUtils.runnerRead(FileSet.validationSet, filePixels);
+        Utils.compWindows(filePixels, computedWindows);
 
         for (Tree tre : bestTrees) {
             thresholds.clear();
-            ThreadUtils.runnerThresholds(computedWindows, numberOfThreads, threads, operations, tre, thresholds, semaphore);
-            scorePerSet = Utils.getScore(filePixels, numberOfThreads, threads, thresholds, semaphore);
+            ThreadUtils.runnerThresholds(computedWindows, operations, tre, thresholds);
+            scorePerSet = Utils.getScore(filePixels, thresholds);
             if (scorePerSet > max) {
                 max = scorePerSet;
                 idx = bestTrees.indexOf(tre);
@@ -81,13 +66,12 @@ public class MainL {
         // Testing the best tree on the last 5% of the files;
         filePixels.clear();
         computedWindows.clear();
-        ThreadUtils.runnerRead(filesList.subList(filesList.size() * 95 / 100, filesList.size()), numberOfThreads,
-                                threads, filePixels, semaphore);
-        Utils.compWindows(filePixels, computedWindows, numberOfThreads, threads, semaphore);
+        ThreadUtils.runnerRead(FileSet.trainSet, filePixels);
+        Utils.compWindows(filePixels, computedWindows);
 
         thresholds.clear();
-        ThreadUtils.runnerThresholds(computedWindows, numberOfThreads, threads, operations, bestTrees.get(idx), thresholds, semaphore);
-        scorePerSet = Utils.getScore(filePixels, numberOfThreads, threads, thresholds, semaphore);
+        ThreadUtils.runnerThresholds(computedWindows, operations, bestTrees.get(idx), thresholds);
+        scorePerSet = Utils.getScore(filePixels, thresholds);
         System.out.println("The score obtained on the test set is " + scorePerSet * 100 + ".");
 
         // Writing the best tree to the Local Binarization Output file.
@@ -109,5 +93,63 @@ public class MainL {
             }
         }
         writer.close();
+
+        BestTreeManager.LOCAL.changeIfBetter(bestTrees.get(idx), scorePerSet);
+
+        return bestTrees.get(idx);
+    }
+
+    public static void test() {
+        var tree = BestTreeManager.LOCAL.getTree();
+
+        if (tree == null) {
+            System.out.println("Tree is not generated. Train tree!");
+            return;
+        }
+        var scorePerSet = testTreePerformance(tree, FileSet.testSet);
+        System.out.println("The score obtained on the test set is " + scorePerSet + ".");
+    }
+
+    public static float testTreePerformance(Tree tree, List<File> files) {
+        List<List<List<Float>>> filePixels = new ArrayList<>();
+        List<List<List<Float>>> computedWindows = new ArrayList<>();
+        List<List<Float>> thresholds = new ArrayList<>();
+
+        ThreadUtils.runnerRead(files, filePixels);
+        Utils.compWindows(filePixels, computedWindows);
+
+        ThreadUtils.runnerThresholds(computedWindows, operations, tree, thresholds);
+
+        return Utils.getScore(filePixels, thresholds);
+    }
+
+    public static Tree generateRandomTree() {
+        Tree tree = new Tree();
+        tree.ourShuffle(operations.size(), operations.size() * 2);
+        tree.ourShuffle(operations.size(), operations.size());
+        tree.ourShuffle(operations.size(), operations.size() - 1);
+        tree.ourShuffle(operations.size(), (operations.size() - 1) / 2);
+
+        return tree;
+    }
+
+    public static void main(String[] args) throws IOException {
+        var scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Command? [train, test, exit]");
+
+            String cmd = scanner.next();
+
+            if ("exit".equalsIgnoreCase(cmd)) {
+                break;
+            } else if ("train".equalsIgnoreCase(cmd)) {
+                train();
+            } else if ("test".equalsIgnoreCase(cmd)) {
+                test();
+            } else {
+                System.out.printf("Undefined command '%s'".formatted(cmd));
+            }
+        }
     }
 }

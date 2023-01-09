@@ -1,5 +1,6 @@
 package global;
 
+import utils.BestTreeManager;
 import utils.Means;
 import utils.Tree;
 import utils.Utils;
@@ -7,69 +8,46 @@ import utils.Utils;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.concurrent.Semaphore;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static Tree train() throws IOException {
         // Obtaining the list of files from the data folder and randomizing it for different outputs.
-        List<File> filesList = new ArrayList<>
-                (Arrays.stream(Objects.requireNonNull(new File("src/global/MPS-Global").listFiles())).toList());
-        Collections.shuffle(filesList);
+        List<String> operations = ThreadUtils.ALL_OPERATIONS;
 
-        List<String> operations = Arrays.asList("CubicMean", "SquareMean", "ArithmeticMean",
-                                                "GeometricMean", "HarmonicMean", "Minimum", "Maximum");
-
-        List<Float> scores = new ArrayList<>();
         List<Tree> bestTrees = new ArrayList<>();
-
-        // Using thread parallelization for faster reading of files and computing of results
-        int numberOfThreads = 16;
-        Thread[] threads = new Thread[numberOfThreads];
-        Semaphore semaphore = new Semaphore(1);
 
         float scorePerSet;
         System.out.println("The scores for the training set are:");
         // Choosing the best 5 trees with a score higher than 86 from the first 70% of files.
         while (bestTrees.size() < 5) {
-            Tree tree = new Tree();
-            tree.ourShuffle(operations.size(), operations.size() * 2 + 1);
-            tree.ourShuffle(operations.size(), operations.size() + 1);
-            tree.ourShuffle(operations.size(), (operations.size() + 1) / 2);
-            tree.ourShuffle(operations.size(), (operations.size() + 1) / 4);
+            Tree tree = generateRandomTree();
 
-            ThreadUtils.runner(filesList.subList(0, filesList.size() * 70 / 100), numberOfThreads, threads,
-                                operations, tree, scores, semaphore);
-
-            scorePerSet = Means.mean_score(scores);
+            scorePerSet = testTreePerformance(tree, FileSet.trainSet);
             System.out.println(scorePerSet);
             if (scorePerSet > 86) {
                 System.out.println("Found a score higher than 86: " + scorePerSet);
                 bestTrees.add(tree);
             }
-            scores.clear();
         }
         /* Keeping the best tree out of the five after being used on the validation set, based on the score obtained
         on the next 25% of the files. */
         float max = 0;
         int idx = 0;
         System.out.println("The scores for the validation set are:");
-        for (Tree tre : bestTrees) {
-            ThreadUtils.runner(filesList.subList(filesList.size() * 70 / 100, filesList.size() * 95 / 100),
-                                numberOfThreads, threads, operations, tre, scores, semaphore);
-            scorePerSet = Means.mean_score(scores);
+        for (Tree tree : bestTrees) {
+            scorePerSet = testTreePerformance(tree, FileSet.trainSet);
             if (scorePerSet > max) {
                 max = scorePerSet;
-                idx = bestTrees.indexOf(tre);
+                idx = bestTrees.indexOf(tree);
             }
             System.out.println(scorePerSet);
         }
-        scores.clear();
         System.out.println("The best score was obtained by tree number " + (idx + 1) + " and it was " + max + ".");
         // Testing the best tree on the last 5% of the files;
-        ThreadUtils.runner(filesList.subList(filesList.size() * 95 / 100, filesList.size()), numberOfThreads,
-                            threads, operations, bestTrees.get(idx), scores, semaphore);
-        scorePerSet = Means.mean_score(scores);
+        scorePerSet = testTreePerformance(bestTrees.get(idx), FileSet.testSet);
         System.out.println("The score obtained on the test set is " + scorePerSet + ".");
+
+        BestTreeManager.GLOBAL.changeIfBetter(bestTrees.get(idx), scorePerSet);
 
         // Writing the best tree to the Global Binarization Output file.
         PrintWriter writer = new PrintWriter("GlobalBinarization.txt", StandardCharsets.UTF_8);
@@ -85,5 +63,58 @@ public class Main {
             }
         }
         writer.close();
+
+        return bestTrees.get(idx);
+    }
+
+    public static void test() {
+        var tree = BestTreeManager.GLOBAL.getTree();
+
+        if (tree == null) {
+            System.out.println("Tree is not generated. Train tree!");
+            return;
+        }
+        var scorePerSet = testTreePerformance(tree, FileSet.testSet);
+        System.out.println("The score obtained on the test set is " + scorePerSet + ".");
+    }
+
+
+    public static float testTreePerformance(Tree tree, List<File> filesList) {
+        var result = new ArrayList<Float>();
+        ThreadUtils.runner(filesList, tree, result);
+
+        return Means.mean_score(result);
+    }
+
+    public static Tree generateRandomTree() {
+        var operations = ThreadUtils.ALL_OPERATIONS;
+
+        Tree tree = new Tree();
+        tree.ourShuffle(operations.size(), operations.size() * 2 + 1);
+        tree.ourShuffle(operations.size(), operations.size() + 1);
+        tree.ourShuffle(operations.size(), (operations.size() + 1) / 2);
+        tree.ourShuffle(operations.size(), (operations.size() + 1) / 4);
+
+        return tree;
+    }
+
+    public static void main(String[] args) throws Exception {
+        var scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Command? [train, test, exit]");
+
+            String cmd = scanner.next();
+
+            if ("exit".equalsIgnoreCase(cmd)) {
+                break;
+            } else if ("train".equalsIgnoreCase(cmd)) {
+                train();
+            } else if ("test".equalsIgnoreCase(cmd)) {
+                test();
+            } else {
+                System.out.printf("Undefined command '%s'".formatted(cmd));
+            }
+        }
     }
 }

@@ -9,8 +9,12 @@ public class CsvParser {
      * @param file the parsed file
      * @return a list composed of thresholds and fMeasures
      */
-    public static List<List<Float>> parse(File file) throws Exception {
-        Scanner sc = new Scanner(file);
+    public static List<List<Float>> parse(File file) throws IOException {
+        return parse(new FileInputStream(file));
+    }
+
+    public static List<List<Float>> parse(InputStream stream) {
+        Scanner sc = new Scanner(stream);
         List<Float> thresholds = new ArrayList<>(Arrays.stream(sc.next().split(",")).map(Float::valueOf).toList());
         List<Float> fMeasures = new ArrayList<>(Arrays.stream(sc.next().split(",")).map(Float::valueOf).toList());
         sc.close();
