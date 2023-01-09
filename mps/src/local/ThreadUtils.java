@@ -8,16 +8,20 @@ import java.util.*;
 import java.util.concurrent.Semaphore;
 
 public class ThreadUtils {
+
+    private static int numberOfThreads = 16;
+    private static Thread[] threads = new Thread[numberOfThreads];
+    private static Semaphore semaphore = new Semaphore(1);
+
     /**
      * This is the parent method for readFile that reads and stores all the pixels from the files.
      */
-    public static void runnerRead(List<File> filesList, int numberOfThreads, Thread[] threads,
-                                  List<List<List<Float>>> filePixels, Semaphore semaphore) {
+    public static void runnerRead(List<File> filesList, List<List<List<Float>>> filePixels) {
         for (int t = 0; t < numberOfThreads; t++) {
             int thread = t;
             threads[t] = new Thread(() -> {
                 try {
-                    ThreadUtils.readFile(filesList, numberOfThreads, thread, filePixels, semaphore);
+                    ThreadUtils.readFile(filesList, thread, filePixels);
                 } catch (Exception ignored) {}
             });
         }
@@ -34,13 +38,10 @@ public class ThreadUtils {
     /**
      * Method to obtain the information about every pixel from every file.
      * @param filesList the list of files
-     * @param numberOfThreads the number of threads
      * @param thread the current thread
      * @param result the variable in which we store the information
-     * @param semaphore the semaphore
      */
-    public static void readFile(List<File> filesList, int numberOfThreads, int thread, List<List<List<Float>>> result,
-                                Semaphore semaphore) throws Exception {
+    public static void readFile(List<File> filesList, int thread, List<List<List<Float>>> result) throws Exception {
         // Obtaining the start and the end for each thread to divide the files between each other.
         List<Integer> range = Utils.getThreadRange(filesList.size(), numberOfThreads, thread);
         List<File> inFiles = filesList.subList(range.get(0), range.get(1));
@@ -56,13 +57,12 @@ public class ThreadUtils {
     /**
      * This is the parent method for computeWindows to obtain the windows of every file
      */
-    public static void runnerWindows(List<List<Float>> pixels, int numberOfThreads, Thread[] threads, List<List<Float>> result,
-                                     Semaphore semaphore) {
+    public static void runnerWindows(List<List<Float>> pixels, List<List<Float>> result) {
         for (int t = 0; t < numberOfThreads; t++) {
             int thread = t;
             threads[t] = new Thread(() -> {
                 try {
-                    ThreadUtils.computeWindows(pixels, numberOfThreads, thread, result, semaphore);
+                    ThreadUtils.computeWindows(pixels, thread, result);
                 } catch (Exception ignored) {}
             });
         }
@@ -80,13 +80,10 @@ public class ThreadUtils {
      * Method to compute the windows. The number of windows is equal to the number of threads. We calculate general
      * thresholds for each window by using mean for each type of threshold.
      * @param pixels the list of pixels from a file
-     * @param numberOfThreads the number of threads
      * @param thread the current thread
      * @param result the variable in which we store the computed windows
-     * @param semaphore the semaphore
      */
-    public static void computeWindows(List<List<Float>> pixels, int numberOfThreads, int thread, List<List<Float>> result,
-                                      Semaphore semaphore) throws Exception {
+    public static void computeWindows(List<List<Float>> pixels, int thread, List<List<Float>> result) throws Exception {
         // Obtaining the start and the end for each thread to divide the pixels from a file between each other.
         List<Integer> range = Utils.getThreadRange(pixels.size(), numberOfThreads, thread);
         List<List<Float>> inPixels = pixels.subList(range.get(0), range.get(1));
@@ -114,15 +111,13 @@ public class ThreadUtils {
     /**
      * This is the parent method for obtainThresholds in which we obtain a threshold for each window.
      */
-    public static void runnerThresholds(List<List<List<Float>>> computedWindows, int numberOfThreads, Thread[] threads,
-                                        List<String> operations, Tree tree, List<List<Float>> thresholds,
-                                        Semaphore semaphore) {
+    public static void runnerThresholds(List<List<List<Float>>> computedWindows,
+                                        List<String> operations, Tree tree, List<List<Float>> thresholds) {
         for (int t = 0; t < numberOfThreads; t++) {
             int thread = t;
             threads[t] = new Thread(() -> {
                 try {
-                    ThreadUtils.obtainThresholds(computedWindows, numberOfThreads, thread, operations, tree, thresholds,
-                                                 semaphore);
+                    ThreadUtils.obtainThresholds(computedWindows, thread, operations, tree, thresholds);
                 } catch (Exception ignored) {}
             });
         }
@@ -139,16 +134,13 @@ public class ThreadUtils {
     /**
      * Method to obtain the thresholds for each file.
      * @param computedWindows the computed windows previously obtained
-     * @param numberOfThreads the number of threads
      * @param thread the current thread
      * @param operations the operations
      * @param tree the tree used to obtain the thresholds
      * @param thresholds the variable in which we store the obtained thresholds
-     * @param semaphore the semaphore
      */
-    public static void obtainThresholds(List<List<List<Float>>> computedWindows, int numberOfThreads, int thread,
-                                        List<String> operations, Tree tree, List<List<Float>> thresholds,
-                                        Semaphore semaphore) throws Exception {
+    public static void obtainThresholds(List<List<List<Float>>> computedWindows, int thread, List<String> operations,
+                                        Tree tree, List<List<Float>> thresholds) throws Exception {
         // Obtaining the start and the end for each thread to divide the files they handle between each other.
         List<Integer> range = Utils.getThreadRange(computedWindows.size(), numberOfThreads, thread);
         List<List<List<Float>>> inWindows = computedWindows.subList(range.get(0), range.get(1));
@@ -214,13 +206,12 @@ public class ThreadUtils {
     /**
      * This is the parent method for obtainScores in which we calculate the scores of each tree.
      */
-    public static void runnerScore(List<List<Float>> pixels, int numberOfThreads, Thread[] threads,
-                                   List<Float> threshold, int[] scores, Semaphore semaphore) {
+    public static void runnerScore(List<List<Float>> pixels, List<Float> threshold, int[] scores) {
         for (int t = 0; t < numberOfThreads; t++) {
             int thread = t;
             threads[t] = new Thread(() -> {
                 try {
-                    ThreadUtils.obtainScores(pixels, numberOfThreads, thread, threshold, scores, semaphore);
+                    ThreadUtils.obtainScores(pixels, thread, threshold, scores);
                 } catch (Exception ignored) {}
             });
         }
@@ -237,15 +228,11 @@ public class ThreadUtils {
     /**
      *
      * @param pixels a list with every pixel from a file
-     * @param numberOfThreads the number of threads
      * @param thread the current thread
      * @param threshold the list of thresholds for each file
      * @param scores the variable in which we store the scores
-     * @param semaphore the semaphores
      */
-
-    public static void obtainScores(List<List<Float>> pixels, int numberOfThreads, int thread,
-                                    List<Float> threshold, int[] scores, Semaphore semaphore) throws Exception {
+    public static void obtainScores(List<List<Float>> pixels, int thread, List<Float> threshold, int[] scores) throws Exception {
         List<Integer> range = Utils.getThreadRange(pixels.size(), numberOfThreads, thread);
         List<List<Float>> inPixels = pixels.subList(range.get(0), range.get(1));
         int localTP = 0;
