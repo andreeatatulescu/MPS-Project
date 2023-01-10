@@ -57,6 +57,8 @@ We are going to have `RETRO` after the 2nd milestone in order to get feedback an
 
 Also, we started the first round of feedback, collecting answers by completing the following [form](<https://forms.office.com/e/Ba72jrc7eX>). 
 
+The second round consisted in a 1:1 call with each team member in order to receive the feedback for the last months working together. 
+
 ### Testing Report
 
 The testing part was made using JUnit: [Testing Report](<https://docs.google.com/document/d/1GaIZr_L488cQh0SpKmMcrVQBhaKT4N0sTBvp1mGzadQ/edit>).
