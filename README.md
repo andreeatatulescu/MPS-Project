@@ -57,4 +57,11 @@ We are going to have `RETRO` after the 2nd milestone in order to get feedback an
 
 Also, we started the first round of feedback, collecting answers by completing the following [form](<https://forms.office.com/e/Ba72jrc7eX>). 
 
+### Testing Report
+
+The testing part was made using JUnit: [Testing Report](<https://docs.google.com/document/d/1GaIZr_L488cQh0SpKmMcrVQBhaKT4N0sTBvp1mGzadQ/edit>).
+
+### Conclusion
+
+Being at the end of this project, we can definteley say that this way of working helped us organizing our tasks and getting the job done. The milestones kept us motivated and hard-working. The best part was that each team member managed to do their part on time, without anu complications, which improved the trust among us.
 
